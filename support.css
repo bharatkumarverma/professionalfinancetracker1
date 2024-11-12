@@ -1,4 +1,15 @@
 /* Ensure content takes up full width on mobile */
+
+/* Make buttons large enough for mobile users to tap easily */
+button, .connect-wallet {
+    font-size: 18px;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
 body {
     margin: 0;
     padding: 0;
