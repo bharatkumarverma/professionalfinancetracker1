@@ -7,6 +7,28 @@
 // });
 
 // Get the table-part element and the transaction-table
+// Web3 Wallet Connection Example
+const connectWalletButton = document.querySelector('.connect-wallet');
+
+connectWalletButton.addEventListener('click', async () => {
+    if (window.ethereum) {
+        try {
+            // Request account access for MetaMask or WalletConnect
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            const address = await signer.getAddress();
+            console.log("Connected address:", address);
+            alert("Wallet connected!");
+        } catch (error) {
+            console.error("Connection error:", error);
+            alert("Failed to connect wallet.");
+        }
+    } else {
+        alert("No Ethereum provider found. Please install MetaMask or use WalletConnect.");
+    }
+});
+
 const tablePart = document.querySelector(".table-part");
 const transactionTable = document.getElementById("transaction-table");
 
